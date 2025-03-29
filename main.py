@@ -9,7 +9,7 @@ from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 
 
-weatherfilepath = '/kaggle/input/weatherdata4/weatherHistory.csv'
+weatherfilepath = 'weatherHistory.csv'
 featurenames = ['Formatted Date', 'Precip Type','Summary', 'Humidity', 'Wind Speed (km/h)', 'Visibility (km)']
 weatherdata = pd.read_csv(weatherfilepath, nrows=5000)
 
