@@ -63,8 +63,8 @@ print(f'MaeSGD: {maeSGD}')
 
 
 plt.figure(figsize=(10, 6))
-#plt.scatter(val_y, predictionsForest, alpha=0.6,label="RandomForest")
-#plt.scatter(val_y, predictionsTree, alpha=0.6,label="DecisionTree",color="green")
+plt.scatter(val_y, predictionsForest, alpha=0.6,label="RandomForest")
+plt.scatter(val_y, predictionsTree, alpha=0.6,label="DecisionTree",color="green")
 plt.scatter(val_y, predictionsSGD, alpha=0.6,label="SGD",color="purple")
 plt.plot([val_y.min(), val_y.max()], [val_y.min(), val_y.max()], '--r', label="Perfect prediction")
 plt.xlabel('Actual Temperature (C)')
