@@ -60,8 +60,32 @@ maeSGD = mean_absolute_error(val_y, predictionsSGD)
 print(f'MaeForest: {maeForest}')
 print(f'MaeTree: {maeTree}')
 print(f'MaeSGD: {maeSGD}')
+print(type(val_y))
+print(type(predictionsForest))
 
+newForest=list(predictionsForest)
+newTree=list(predictionsTree)
+newSGD=list(predictionsSGD)
+val_y_array = val_y.to_numpy()
 
+for i in range(len(predictionsForest)):
+    newForest[i] = abs(predictionsForest[i] - val_y.iloc[i])
+
+for i in range(len(predictionsTree)):
+    newTree[i] = abs(predictionsTree[i] - val_y.iloc[i])
+
+for i in range(len(predictionsSGD)):
+    newSGD[i] = abs(predictionsSGD[i] - val_y.iloc[i])
+
+newForest = sorted(newForest)
+newTree = sorted(newTree)
+newSGD = sorted(newSGD)
+newForest.reverse()
+newTree.reverse()
+newSGD.reverse()
+print(newForest[0])
+print(newTree[0])
+print(newTree[0])
 plt.figure(figsize=(10, 6))
 plt.scatter(val_y, predictionsForest, alpha=0.6,label="RandomForest")
 plt.scatter(val_y, predictionsTree, alpha=0.6,label="DecisionTree",color="green")
@@ -74,8 +98,8 @@ plt.legend(labels=["SGD","Perfect prediction"])
 
 plt.show()
 
-'''
 
+'''
 def get_user_input():
     formatted_date = input("Enter Formatted Date (example : 2016-09-28 13:00:00): ")
     precip_type = input("Enter Precip Type (e.g., rain, snow, none): ")
@@ -137,4 +161,5 @@ user_data_scaled = preprocess_user_input(user_data, scaler, weathermodel)
 predicted_temp = weathermodel.predict(user_data_scaled)
 
 print(f"Predicted Temperature: {predicted_temp[0]:.2f}°C")
+
 '''
